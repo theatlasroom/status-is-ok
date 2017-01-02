@@ -1,12 +1,32 @@
 {
-  "name": "status-is-ok",
+  "name": "is-ok",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theatlasroom/is-ok.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theatlasroom/is-ok/issues"
+  },
+  "homepage": "https://github.com/theatlasroom/is-ok#readme",
+  "devDependencies": {
+    "standard": "^8.6.0"
+  },
   "dependencies": {
-    "assert": "^1.4.1",
-    "axios": "^0.15.3",
-    "standard": "^8.6.0",
-    "tape": "^4.6.3"
+    "axios": "^0.15.3"
+  },
+  "author": "Ezekiel <@theatlasroom>",
+  "keywords": [
+    "200",
+    "http",
+    "status",
+    "OK"
+  ],
+  "standard": {
+    "ignore": [
+      "**/test.js"
+    ]
   }
 }

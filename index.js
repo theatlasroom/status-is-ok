@@ -1,72 +1,72 @@
-const assert = require('assert');
-const axios = require('axios');
+const assert = require('assert')
+const axios = require('axios')
 
-function hasProtocol(url){
-  const regex = /https*\:\/\//;
-  return url.match(regex);
+function hasProtocol (url) {
+  const regex = /https*:\/\//
+  return url.match(regex)
 }
 
-
-let StatusIsOk = function(url, cb){
-  if (typeof url !== 'undefined'){
-    assert.equal(typeof url, 'string', 'The url passed in should be a string');
-    return checkUrl(url, cb);
+let StatusIsOk = function (url, cb) {
+  if (typeof url !== 'undefined') {
+    assert.equal(typeof url, 'string', 'The url passed in should be a string')
+    return checkUrl(url, cb)
   }
 }
 
-StatusIsOk.prototype.check = checkUrl;
+StatusIsOk.prototype.check = checkUrl
 
-function checkUrl(url, cb){
-  assert.ok(hasProtocol(url), 'The url is missing a protocol');
-  this.url = url;
-  if (cb)
-    return isOk(this.url, cb);
-  return promiseIsOk(this.url);
+function checkUrl (url, cb) {
+  assert.ok(hasProtocol(url), 'The url is missing a valid protocol - http or https')
+  this.url = url
+  if (cb) {
+    return isOk(this.url, cb)
+  }
+  return promiseIsOk(this.url)
 }
 
-function isOk(url, cb){
+function isOk (url, cb) {
   axios
     .get(url)
     .then((response) => {
-      const msg = prepareResponse(response);
-      cb(null, msg);
+      const msg = prepareResponse(response)
+      cb(null, msg)
     })
     .catch((err) => {
-      cb(sendError(err));
-    });
+      cb(sendError(err))
+    })
 }
 
-function promiseIsOk(url){
-  return new Promise(function(resolve, reject) {
+function promiseIsOk (url) {
+  return new Promise(function (resolve, reject) {
     axios
       .get(url)
       .then((response) => {
-        const msg = prepareResponse(response);
-        resolve(msg);
+        const msg = prepareResponse(response)
+        resolve(msg)
       })
       .catch((err) => {
-        reject(sendError(err));
-      });
-  });
+        reject(sendError(err))
+      })
+  })
 }
 
 // any failure, return a 404
-function sendError(error){
+function sendError (error) {
   return {
     isOk: false,
     status: 404,
     message: 'Not found',
-    error,
-  };
+    error
+  }
 }
 
-function prepareResponse(response){
+function prepareResponse (response) {
   return {
     isOk: response.status === 200,
     status: response.status,
     message: response.statusText,
-    error: null,
-  };
+    error: null
+  }
 }
 
-module.exports = StatusIsOk;
+module.exports = StatusIsOk
