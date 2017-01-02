@@ -1,16 +1,16 @@
 {
-  "name": "is-ok",
+  "name": "status-is-ok",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theatlasroom/is-ok.git"
+    "url": "git+https://github.com/theatlasroom/status-is-ok.git"
   },
   "bugs": {
-    "url": "https://github.com/theatlasroom/is-ok/issues"
+    "url": "https://github.com/theatlasroom/status-is-ok/issues"
   },
-  "homepage": "https://github.com/theatlasroom/is-ok#readme",
+  "homepage": "https://github.com/theatlasroom/status-is-ok#readme",
   "devDependencies": {
     "standard": "^8.6.0"
   },
