@@ -12,10 +12,16 @@
   },
   "homepage": "https://github.com/theatlasroom/status-is-ok#readme",
   "devDependencies": {
-    "standard": "^8.6.0"
+    "standard": "^8.6.0",
+    "tap-dot": "^1.0.5",
+    "tape": "^4.6.3"
   },
   "dependencies": {
     "axios": "^0.15.3"
+  },
+  "scripts": {
+    "test": "tape test.js | tap-dot ",
+    "lint": "standard *.js --fix"
   },
   "author": "Ezekiel <@theatlasroom>",
   "keywords": [
@@ -23,10 +29,5 @@
     "http",
     "status",
     "OK"
-  ],
-  "standard": {
-    "ignore": [
-      "**/test.js"
-    ]
-  }
+  ]
 }

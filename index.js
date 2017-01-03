@@ -1,4 +1,4 @@
-const assert = require('assert')
+'use strict'
 const axios = require('axios')
 
 function hasProtocol (url) {
@@ -6,9 +6,9 @@ function hasProtocol (url) {
   return url.match(regex)
 }
 
-let StatusIsOk = function (url, cb) {
+function StatusIsOk (url, cb) {
   if (typeof url !== 'undefined') {
-    assert.equal(typeof url, 'string', 'The url passed in should be a string')
+    if (typeof url !== 'string') throw new Error('The url passed in should be a string')
     return checkUrl(url, cb)
   }
 }
@@ -16,12 +16,12 @@ let StatusIsOk = function (url, cb) {
 StatusIsOk.prototype.check = checkUrl
 
 function checkUrl (url, cb) {
-  assert.ok(hasProtocol(url), 'The url is missing a valid protocol - http or https')
-  this.url = url
+  // assert.ok(hasProtocol(url), 'The url is missing a valid protocol - http or https')
+  if (!hasProtocol(url)) throw new Error('The url is missing a valid protocol - http or https')
   if (cb) {
-    return isOk(this.url, cb)
+    return isOk(url, cb)
   }
-  return promiseIsOk(this.url)
+  return promiseIsOk(url)
 }
 
 function isOk (url, cb) {
