@@ -12,12 +12,12 @@
   },
   "homepage": "https://github.com/theatlasroom/status-is-ok#readme",
   "devDependencies": {
-    "standard": "^8.6.0",
-    "tap-dot": "^1.0.5",
-    "tape": "^4.6.3"
+    "standard": "^13.0.2",
+    "tap-dot": "^2.0.0",
+    "tape": "^4.11.0"
   },
   "dependencies": {
-    "axios": "^0.15.3"
+    "axios": "^0.19.0"
   },
   "scripts": {
     "test": "tape test.js | tap-dot ",
